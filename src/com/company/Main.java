@@ -21,16 +21,22 @@ public class Main {
             System.out.println("You see " + currentRoom.getRoomContent());
 
             game.vistedRooms.add(game.getCurrentRoom());
-            game.earnedMoney += currentRoom.getPrize();
+            System.out.printf("There is  %.2f dollar in the room.Do you want to take it? press Y or N %n",game.getCurrentRoom().getPrize());
+            String takeOrLeave=keyboard.nextLine();
+            if(takeOrLeave.equalsIgnoreCase("y")) {
+                game.earnedMoney += currentRoom.getPrize();
+                currentRoom.setPrize(0);
+            }
+
             if (currentRoom.isThereAMonster())
             {
                 game.setEarnedMoney(0);
                 System.out.println("Oops a monster at "+ currentRoom.getName() +" just took all your money");
 
             }
-            currentRoom.setPrize(0);
+
             System.out.println(" Total Earned Money: "+game.getEarnedMoney());
-            System.out.println(" total rooms visited: "+game.vistedRooms.size());
+
 
             Iterator it = currentRoom.getChoices().entrySet().iterator();
             while (it.hasNext()) {
@@ -46,6 +52,8 @@ public class Main {
             game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
 
         } while (!pick.equalsIgnoreCase("q"));
+
+        System.out.println(" total rooms visited: "+game.vistedRooms.size());
 
         keyboard.close();
 
