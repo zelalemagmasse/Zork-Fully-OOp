@@ -9,6 +9,16 @@ public class Room {
     private String roomContent;
     private boolean isThereAMonster;
 
+    public boolean isThereAlamp() {
+        return isThereAlamp;
+    }
+
+    public void setThereAlamp(boolean thereAlamp) {
+        isThereAlamp = thereAlamp;
+    }
+
+    private boolean isThereAlamp;
+
     public Room(int id, String name, double prize, String roomContent) {
         super();
         this.id = id;

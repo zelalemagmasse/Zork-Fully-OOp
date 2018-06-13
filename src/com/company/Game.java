@@ -112,6 +112,7 @@ public class Game {
         {
             if(room.getId()==monsterroomID)
                 room.setThereAMonster(true);
+                room.isThereAlamp();
         }
 
 

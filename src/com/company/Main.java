@@ -34,6 +34,9 @@ public class Main {
                 System.out.println("Oops a monster at "+ currentRoom.getName() +" just took all your money");
 
             }
+            if(currentRoom.isThereAlamp()){
+
+            }
 
             System.out.println(" Total Earned Money: "+game.getEarnedMoney());
 
