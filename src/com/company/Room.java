@@ -13,20 +13,30 @@ public class Room {
         return isThereAlamp;
     }
 
+    public Map<Lamp, String> getLampChoice() {
+        return lampChoice;
+    }
+
+    public void setLampChoice(Map<Lamp, String> lampChoice) {
+        this.lampChoice = lampChoice;
+    }
+
     public void setThereAlamp(boolean thereAlamp) {
         isThereAlamp = thereAlamp;
     }
 
     private boolean isThereAlamp;
 
-    public Room(int id, String name, double prize, String roomContent) {
+    public Room(int id, String name, double prize) {
         super();
         this.id = id;
         this.name = name;
         this.prize = prize;
-        this.roomContent = roomContent;
+
     }
     private Map<Direction, Room> choices = new HashMap<>();
+    private Map<Lamp, String> lampChoice = new HashMap<>();
+
 
     public int getId() {
         return id;
@@ -74,5 +84,8 @@ public class Room {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String toString(){
+        return this.name;
     }
 }

@@ -10,12 +10,17 @@ public class Main {
         Game game = new Game();
         game.initialize();
         game.setCurrentRoom(game.rooms.get(0));
+        game.rooms.get(0).setRoomContent(game.rooms.get(0).getLampChoice().get(Lamp.NOLAMP));
+        game.lampOn=false;
+
         Scanner keyboard = new Scanner(System.in);
-        String pick;
+        String pick=" ";
 
         do {
 
+
             Room currentRoom = game.getCurrentRoom();
+
 
             System.out.println("You are standing in " + currentRoom.getName());
             System.out.println("You see " + currentRoom.getRoomContent());
@@ -34,12 +39,50 @@ public class Main {
                 System.out.println("Oops a monster at "+ currentRoom.getName() +" just took all your money");
 
             }
-            if(currentRoom.isThereAlamp()){
-
-            }
-
             System.out.println(" Total Earned Money: "+game.getEarnedMoney());
+            if(currentRoom.isThereAlamp()||game.lampOn){
+                if(game.lampOn){
+                    Iterator it = currentRoom.getChoices().entrySet().iterator();
+                    while (it.hasNext()) {
+                        Map.Entry pair = (Map.Entry) it.next();
+                        System.out.println(pair.getKey());
 
+                    }
+
+                    System.out.println("Enter Your choice from the above list: ");
+                    pick = keyboard.nextLine();
+                    if(pick.equalsIgnoreCase("q"))
+                        break;
+                    game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
+                    Room rn=game.getCurrentRoom().getChoices().get(getChoice(pick));
+                    rn.setRoomContent(rn.getLampChoice().get(Lamp.NOLAMP));
+                    game.lampOn=true;
+                }
+                else {
+                    System.out.println("There is a Lamp in this room. if you want to take it type \"Get Lump\" or type any key to go with out the Lamp ");
+                    String lampChoice=keyboard.nextLine();
+                    if(lampChoice.equalsIgnoreCase("get lamp")){
+                        Iterator it = currentRoom.getChoices().entrySet().iterator();
+                        while (it.hasNext()) {
+                            Map.Entry pair = (Map.Entry) it.next();
+                            System.out.println(pair.getKey());
+
+                        }
+
+                        System.out.println("Enter Your choice from the above list: ");
+                        pick = keyboard.nextLine();
+                        if(pick.equalsIgnoreCase("q"))
+                            break;
+                        game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
+                        Room rn=game.getCurrentRoom().getChoices().get(getChoice(pick));
+                        rn.setRoomContent(rn.getLampChoice().get(Lamp.NOLAMP));
+                        game.lampOn=true;
+                    }
+                }
+
+
+
+            }else{
 
             Iterator it = currentRoom.getChoices().entrySet().iterator();
             while (it.hasNext()) {
@@ -50,9 +93,14 @@ public class Main {
 
             System.out.println("Enter Your choice from the above list: ");
             pick = keyboard.nextLine();
-            if(pick.equalsIgnoreCase("q"))
+            if(pick.equalsIgnoreCase("q")) {
                 break;
-            game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
+            }
+                game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
+                Room rn=game.getCurrentRoom().getChoices().get(getChoice(pick));
+                System.out.println(rn.getLampChoice().get(Lamp.NOLAMP));
+               // rn.setRoomContent(rn.getLampChoice().get(Lamp.NOLAMP));
+            }
 
         } while (!pick.equalsIgnoreCase("q"));
 
