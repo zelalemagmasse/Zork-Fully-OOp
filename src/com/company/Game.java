@@ -146,6 +146,7 @@ public class Game {
         rooms.add(secretRoom);
         rooms.add(frontRoom);
         putMonster();
+        putLamp();
 
     }
 
@@ -154,13 +155,27 @@ public class Game {
         int monsterroomID= rand.nextInt(8)+1;
         for (Room room: rooms)
         {
-            if(room.getId()==monsterroomID)
+            if(room.getId()==monsterroomID) {
                 room.setThereAMonster(true);
-                room.isThereAlamp();
+
+            }
         }
 
 
     }
+    void putLamp() {
+        Random rand = new Random();
+        int monsterroomID= rand.nextInt(8)+1;
+        for (Room room: rooms)
+        {
+            if(room.getId()==monsterroomID) {
+                room.setThereAlamp(true);
+            }
+        }
+
+
+    }
+
 
     public Room getCurrentRoom() {
         return currentRoom;

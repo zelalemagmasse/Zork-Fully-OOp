@@ -54,12 +54,12 @@ public class Main {
                     if(pick.equalsIgnoreCase("q"))
                         break;
                     game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
-                    Room rn=game.getCurrentRoom().getChoices().get(getChoice(pick));
-                    rn.setRoomContent(rn.getLampChoice().get(Lamp.NOLAMP));
+                    game.currentRoom.setRoomContent(game.currentRoom.getLampChoice().get(Lamp.LAMP));
+
                     game.lampOn=true;
                 }
                 else {
-                    System.out.println("There is a Lamp in this room. if you want to take it type \"Get Lump\" or type any key to go with out the Lamp ");
+                    System.out.println("There is a Lamp in this room. if you want to take it type \"Get Lamp\" or type any key to go with out the Lamp ");
                     String lampChoice=keyboard.nextLine();
                     if(lampChoice.equalsIgnoreCase("get lamp")){
                         Iterator it = currentRoom.getChoices().entrySet().iterator();
@@ -74,8 +74,8 @@ public class Main {
                         if(pick.equalsIgnoreCase("q"))
                             break;
                         game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
-                        Room rn=game.getCurrentRoom().getChoices().get(getChoice(pick));
-                        rn.setRoomContent(rn.getLampChoice().get(Lamp.NOLAMP));
+                        game.currentRoom.setRoomContent(game.currentRoom.getLampChoice().get(Lamp.LAMP));
+
                         game.lampOn=true;
                     }
                 }
@@ -97,9 +97,8 @@ public class Main {
                 break;
             }
                 game.setCurrentRoom(game.getCurrentRoom().getChoices().get(getChoice(pick)));
-                Room rn=game.getCurrentRoom().getChoices().get(getChoice(pick));
-                System.out.println(rn.getLampChoice().get(Lamp.NOLAMP));
-               // rn.setRoomContent(rn.getLampChoice().get(Lamp.NOLAMP));
+                game.currentRoom.setRoomContent(game.currentRoom.getLampChoice().get(Lamp.NOLAMP));
+
             }
 
         } while (!pick.equalsIgnoreCase("q"));

@@ -8,10 +8,17 @@ public class Room {
     private double prize;
     private String roomContent;
     private boolean isThereAMonster;
-
+    private boolean isThereAlamp;
     public boolean isThereAlamp() {
         return isThereAlamp;
     }
+
+    public void setThereAlamp(boolean thereAlamp) {
+        isThereAlamp = thereAlamp;
+    }
+
+
+
 
     public Map<Lamp, String> getLampChoice() {
         return lampChoice;
@@ -21,11 +28,9 @@ public class Room {
         this.lampChoice = lampChoice;
     }
 
-    public void setThereAlamp(boolean thereAlamp) {
-        isThereAlamp = thereAlamp;
-    }
 
-    private boolean isThereAlamp;
+
+
 
     public Room(int id, String name, double prize) {
         super();
